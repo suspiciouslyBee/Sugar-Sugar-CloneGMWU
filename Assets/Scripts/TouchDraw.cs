@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -70,8 +71,9 @@ public class TouchDraw : MonoBehaviour
             line.SetPosition(line.positionCount-1, position);
             Vector3[] positionList = new Vector3[line.positionCount];
             line.GetPositions(positionList);
+        
 
-            edge.SetPoints()
+            edge.SetPoints(positionList.ToList<Vector3>());
             //using the new position, add a point to the 2d collider
 
             yield return null;
