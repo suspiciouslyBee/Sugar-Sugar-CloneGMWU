@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -60,6 +61,7 @@ public class TouchDraw : MonoBehaviour
         //need to store the LR
         LineRenderer line = newStroke.GetComponent<LineRenderer>();
         EdgeCollider2D edge = newStroke.GetComponent<EdgeCollider2D>();
+        List<Vector2> points = new List<Vector2>;
         line.positionCount = 0;
         //edge.Reset();
 
@@ -68,12 +70,18 @@ public class TouchDraw : MonoBehaviour
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;
             line.positionCount++;
-            line.SetPosition(line.positionCount-1, position);
-            Vector3[] positionList = new Vector3[line.positionCount];
-            line.GetPositions(positionList);
-        
 
-            edge.SetPoints(positionList.ToList<Vector3>());
+            //edge.points = line.GetComponent
+            line.SetPosition(line.positionCount-1, position);
+            //Vector3[] positionList = new Vector3[line.positionCount];
+            //line.GetPositions(positionList);
+
+            //auto culls z
+            points.Add(position);
+
+            edge.points = points.ToArray();
+
+            //edge.SetPoints(positionList.ToList<Vector3>());
             //using the new position, add a point to the 2d collider
 
             yield return null;
