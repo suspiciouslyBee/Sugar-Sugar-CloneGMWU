@@ -61,7 +61,7 @@ public class TouchDraw : MonoBehaviour
         //need to store the LR
         LineRenderer line = newStroke.GetComponent<LineRenderer>();
         EdgeCollider2D edge = newStroke.GetComponent<EdgeCollider2D>();
-        List<Vector2> points = new List<Vector2>;
+        List<Vector2> points = new List<Vector2>();
         line.positionCount = 0;
         //edge.Reset();
 
