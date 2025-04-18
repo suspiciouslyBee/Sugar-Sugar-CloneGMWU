@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TouchDraw : MonoBehaviour
@@ -57,7 +58,9 @@ public class TouchDraw : MonoBehaviour
         GameObject newStroke = Instantiate(lineAsset, Vector3.zero, Quaternion.identity);
         //need to store the LR
         LineRenderer line = newStroke.GetComponent<LineRenderer>();
+        EdgeCollider2D edge = newStroke.GetComponent<EdgeCollider2D>();
         line.positionCount = 0;
+        //edge.Reset();
 
         while(true) {
 
@@ -65,6 +68,11 @@ public class TouchDraw : MonoBehaviour
             position.z = 0;
             line.positionCount++;
             line.SetPosition(line.positionCount-1, position);
+            Vector3[] positionList = new Vector3[line.positionCount];
+            line.GetPositions(positionList);
+
+            edge.SetPoints()
+            //using the new position, add a point to the 2d collider
 
             yield return null;
         }
