@@ -21,11 +21,11 @@ public class Mug : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if && works like C/C++, the object tag will get checked first
+        //if && works like C/C++, the first item will get checked first
 
         //order of elimination:
         //mugRemaining (broadest) - will not accept anything if < 1
-        //only accepts particles
+        //only accepts particles from then on
 
         //the original Sugar Sugar game would accept/destroy all particles at this point, but
         //wouldnt decrement the counter. so ive replicated this with a nested if
