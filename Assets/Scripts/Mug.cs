@@ -13,4 +13,18 @@ public class Mug : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if && works like C/C++, the object tag will get checked first
+        //mouthful, just checking if the collider is a particle, then checking if our (mug's) color
+        //matches
+
+        if(collision.CompareTag("Particle") 
+            && collision.GetComponent<SpriteRenderer>().color 
+            == gameObject.GetComponent<SpriteRenderer>().color)
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
