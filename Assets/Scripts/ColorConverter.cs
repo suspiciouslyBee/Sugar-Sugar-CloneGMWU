@@ -27,10 +27,7 @@ public class ColorConverter : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        collision.GetComponent<SpriteRenderer>().color = colorToConvertTo;
-    }
+
 
     //Validate runs every time something is changed in the inspector
     //Basically automates assigning a color
