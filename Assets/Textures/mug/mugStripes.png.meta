@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 9e8a6201b0b79014b9801f30507f7eb8
+guid: dc42c5e8adfd1d346b91cc420bd71c77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8107023442021417769
-    second: gravityButton_0
+      213: -1534513556135463580
+    second: mugStripes_0
+  - first:
+      213: -4746766812296695275
+    second: mugStripes_1
+  - first:
+      213: -6108899628470605425
+    second: mugStripes_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +119,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gravityButton_0
+      name: mugStripes_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 31
         y: 0
-        width: 512
+        width: 64
         height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 923837f1edee18070800000000000000
-      internalID: 8107023442021417769
+      spriteID: 46536870d0054bae0800000000000000
+      internalID: -1534513556135463580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mugStripes_1
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5123171dbb8102eb0800000000000000
+      internalID: -4746766812296695275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mugStripes_2
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f896e7c7724d83ba0800000000000000
+      internalID: -6108899628470605425
       vertices: []
       indices: 
       edges: []
@@ -147,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      gravityButton_0: 8107023442021417769
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
