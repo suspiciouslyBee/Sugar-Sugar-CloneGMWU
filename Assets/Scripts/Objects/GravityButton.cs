@@ -17,9 +17,11 @@ public class GravityButton : MonoBehaviour
     {
         
     }
-    void ReverseGravity()
+    public void ReverseGravity()
     {
-        
+        SceneDescriptor.localInstance.UpdateSceneGravity
+            (-SceneDescriptor.localInstance.localDefaultGravityScale);
 
+        Debug.Log("Gravity Reversing!");
     }
 }

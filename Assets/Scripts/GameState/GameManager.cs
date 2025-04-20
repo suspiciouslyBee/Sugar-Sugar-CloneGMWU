@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    void UpdateSceneGravity(float newGravity)
+    public void UpdateSceneGravity(float newGravity)
     {
         SceneDescriptor.localInstance.UpdateSceneGravity(newGravity);
     }
