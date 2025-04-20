@@ -27,7 +27,4 @@ public class MugColors : SerializedDictionary<Color, int>
             Debug.Log("Color : " + entry.Key + "Remaining : " + entry.Value);
         }
     }
-
-
-
 }

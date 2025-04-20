@@ -14,11 +14,20 @@ public class Mug : MonoBehaviour
 
     public delegate void TriggerHandler(Collider2D collision);
     TriggerHandler mugTrigger;
+    public SpriteRenderer mugStripes;
 
 
+    //NOTE: only officially supports two colors, but this format lets me expand with more colors
+    //in a future revision
     public MugColors colorMatrix;
-   
 
+    //which makes this super silly;
+
+    /*
+    public Color primary = Color.white;
+    public Color secondary;
+   
+    */
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -97,20 +106,21 @@ public class Mug : MonoBehaviour
         if(!colorMatrix.GetDictionary().TryGetValue(
            collision.GetComponent<SpriteRenderer>().color, out remainingColoredSugar))
         {
-            Debug.Log("No Match " + collision.GetComponent<SpriteRenderer>().color + " " 
-                      + colorMatrix.GetDictionary()[Color.white]);
+            //Debug.Log("No Match " + collision.GetComponent<SpriteRenderer>().color + " " 
+            //          + colorMatrix.GetDictionary()[Color.white]);
+
             Destroy(collision.gameObject);
             return;
         }
 
         if(remainingColoredSugar < 1 || !collision.CompareTag("Particle"))
         {
-            Debug.Log("Not Particle or sugar filled");
-            Destroy(collision.gameObject);
+            //Debug.Log("Not Particle or sugar filled");
+            //Destroy(collision.gameObject);
             return;
         }
 
-        Debug.Log("decrement time");
+        //Debug.Log("decrement time");
         colorMatrix.GetDictionary()[collision.GetComponent<SpriteRenderer>().color]--;
 
         //remainingColoredSugar--;
@@ -121,5 +131,29 @@ public class Mug : MonoBehaviour
 
     }
 
+
+    //change at this level, update both the mug color and secondary color
+    //this is a stopgap automation tool but i just want to move on to doing levels
+    //if secondary has an alpha level, then this is interpreted as not existing
+    //stupid and inefficient
+    //TODO: redesign this at somepoint
+
+    /*
+
+    private void OnValidate()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = primary;
+
+        //checks the alpha, applies to stripes
+        if(secondary.a != 1)
+        {
+            mugStripes.color = primary;
+            return;
+        }
+
+        mugStripes.color = secondary;
+
+    }
+    */
 
 }
