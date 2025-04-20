@@ -53,6 +53,9 @@ public class ParticleSpawner : MonoBehaviour
     }
 
 
-
+    public void UpdateGravity(float newGravity)
+    {
+        SugarObject.GetComponent<Rigidbody2D>().gravityScale = newGravity;
+    }
 
 }
