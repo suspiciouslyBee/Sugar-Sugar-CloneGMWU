@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Particle : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
+        //this probably wont scale well
+        gameObject.GetComponent<Rigidbody2D>().gravityScale 
+                = SceneDescriptor.localInstance.localDefaultGravityScale;
+    }
 }
