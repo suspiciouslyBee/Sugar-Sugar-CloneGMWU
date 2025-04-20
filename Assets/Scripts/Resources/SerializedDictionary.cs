@@ -2,18 +2,18 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 //"borrowed" from nerd head
-public class SerializedDictionary : MonoBehaviour
+//edited to be generic
+//only needs to be editable from inspector
+
+//T1: key, T2: value
+public class DictionaryWrapper <T1, T2> : MonoBehaviour
 {
 
     [SerializeField]
-    string thisObjectName;
+    SerializedDictionary<T1,T2> newDict;
 
-    [SerializeField]
-    NewDict newDict;
-
-    Dictionary<string, GameObject> objectsNames;
+    Dictionary<T1, T2> objectsNames;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,29 +22,29 @@ public class SerializedDictionary : MonoBehaviour
     }
 }
 [Serializable]
-public class NewDict
+public class SerializedDictionary <T1, T2>
 {
     [SerializeField]
-    NewDictItem[] thisDictItems;
+    SerializedDictItem<T1, T2>[] thisDictItems;
 
-    public Dictionary<string, GameObject> ToDictionary()
+    public Dictionary<T1, T2> ToDictionary()
     {
-        Dictionary<string, GameObject> newDict = new Dictionary<string, GameObject>();
+        Dictionary<T1, T2> newDict = new Dictionary<T1, T2>();
 
         foreach(var item in thisDictItems)
         {
-            newDict.Add(item.name, item.obj);
+            newDict.Add(item.key, item.value);
         }
         return newDict;
     }
 }
 
 [Serializable]
-public class NewDictItem
+public class SerializedDictItem <T1, T2>
 {
     [SerializeField]
-    public string name;
+    public T1 key;
     [SerializeField]
-    public GameObject obj;
+    public T2 value;
 }
 
