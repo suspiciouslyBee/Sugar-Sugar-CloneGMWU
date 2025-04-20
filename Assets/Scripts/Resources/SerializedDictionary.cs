@@ -4,14 +4,13 @@ using UnityEngine;
 
 //"borrowed" from nerd head
 //edited to be generic
-//only needs to be editable from inspector
-
-//T1: key, T2: value
-public class DictionaryWrapper <T1, T2> : MonoBehaviour
+//only needs to be as simple as 
+//T1: value 
+public class SerializedDictionary<T1, T2> : MonoBehaviour
 {
 
     [SerializeField]
-    SerializedDictionary<T1,T2> newDict;
+    DictionaryWrapper<T1,T2> newDict;
 
     Dictionary<T1, T2> objectsNames;
 
@@ -22,7 +21,7 @@ public class DictionaryWrapper <T1, T2> : MonoBehaviour
     }
 }
 [Serializable]
-public class SerializedDictionary <T1, T2>
+public class DictionaryWrapper <T1, T2>
 {
     [SerializeField]
     SerializedDictItem<T1, T2>[] thisDictItems;

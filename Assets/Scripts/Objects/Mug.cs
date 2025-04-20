@@ -2,15 +2,18 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class Mug : MonoBehaviour
 {
+
+
     //bake
     public int mugRemaining = 100;
     public TextMeshProUGUI scoreTextObj; //just store the ref
 
-
-    //
-    public Dictionary<Color, int> capacityPerColor = new Dictionary<Color, int>();
+  
+    public SerializedDictionary<Color, int> colors = new SerializedDictionary<Color, int>();
+   
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
