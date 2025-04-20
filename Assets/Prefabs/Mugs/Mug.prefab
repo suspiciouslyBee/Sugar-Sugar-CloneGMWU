@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5984772720841801676}
   - component: {fileID: 2528721528807206374}
   - component: {fileID: 1025503433278539940}
-  - component: {fileID: 6226572382271704207}
   m_Layer: 0
   m_Name: Mug
   m_TagString: Untagged
@@ -249,23 +248,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreTextObj: {fileID: 5842480598811062636}
-  colorMatrix: {fileID: 6226572382271704207}
---- !u!114 &6226572382271704207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954855514774309695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f3a00e075d77540944c391c3a8db13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newDict:
-    thisDictItems:
-    - key: {r: 1, g: 1, b: 1, a: 0}
-      value: 100
+  primary: {r: 1, g: 1, b: 1, a: 1}
+  baseColorObject: {fileID: 2988061110463489117}
+  primaryRemaining: 100
+  secondary: {r: 1, g: 1, b: 1, a: 1}
+  secondaryColorObject: {fileID: 5837730820486467309}
+  secondaryRemaining: 0
 --- !u!1 &4158447943091320974
 GameObject:
   m_ObjectHideFlags: 0

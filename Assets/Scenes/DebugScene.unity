@@ -962,6 +962,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1025503433278539940, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: primary.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025503433278539940, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: primary.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025503433278539940, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: primary.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2988061110463489117, guid: bf50f489292dd1b40a1379023425c898, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -969,6 +981,22 @@ PrefabInstance:
     - target: {fileID: 2988061110463489117, guid: bf50f489292dd1b40a1379023425c898, type: 3}
       propertyPath: m_Color.g
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988061110463489117, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837730820486467309, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837730820486467309, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837730820486467309, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
       propertyPath: newDict.thisDictItems.Array.data[0].key.b
@@ -1039,33 +1067,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
-      propertyPath: newDict.thisDictItems.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
-      propertyPath: newDict.thisDictItems.Array.data[0].key.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
-      propertyPath: newDict.thisDictItems.Array.data[1].key.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
-      propertyPath: newDict.thisDictItems.Array.data[1].key.b
+    - target: {fileID: 1025503433278539940, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: secondary.b
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
-      propertyPath: newDict.thisDictItems.Array.data[1].key.g
+    - target: {fileID: 1025503433278539940, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: secondary.g
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
-      propertyPath: newDict.thisDictItems.Array.data[1].key.r
+    - target: {fileID: 1025503433278539940, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: secondary.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
-      propertyPath: newDict.thisDictItems.Array.data[1].value
-      value: 49
+    - target: {fileID: 1025503433278539940, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: secondaryRemaining
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988061110463489117, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988061110463489117, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988061110463489117, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837730820486467309, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837730820486467309, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837730820486467309, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7860588910743671763, guid: bf50f489292dd1b40a1379023425c898, type: 3}
       propertyPath: m_Camera
@@ -1436,6 +1476,9 @@ MonoBehaviour:
     thisDictItems:
     - key: {r: 1, g: 1, b: 1, a: 0}
       value: 100
+  primary: {r: 1, g: 1, b: 1, a: 1}
+  baseColor: {fileID: 0}
+  secondaryColor: {fileID: 0}
 --- !u!1001 &5426718271130626895
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,37 +14,41 @@ public class Mug : MonoBehaviour
 
     public delegate void TriggerHandler(Collider2D collision);
     TriggerHandler mugTrigger;
-    public SpriteRenderer mugStripes;
+   
+    
 
 
     //NOTE: only officially supports two colors, but this format lets me expand with more colors
     //in a future revision
-    public MugColors colorMatrix;
+    //public MugColors colorMatrix;
 
     //which makes this super silly;
 
-    /*
+    
     public Color primary = Color.white;
-    public Color secondary;
+    public SpriteRenderer baseColorObject;
+    public int primaryRemaining = 100;
+    public Color secondary = Color.white;
+    public SpriteRenderer secondaryColorObject;
+    public int secondaryRemaining = 0;
    
-    */
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //mugRemaining = colorMatrix.RemainingTotalSugar();
         //scoreTextObj.text = mugRemaining.ToString();
 
-        scoreTextObj.text = colorMatrix.RemainingTotalSugar().ToString();
+        scoreTextObj.text = (primaryRemaining + secondaryRemaining).ToString();
 
         //set the behavior mode between single or dynamic
 
-        if (colorMatrix.ColorCount() > 1)
+        if (primary == secondary || secondaryRemaining < 1)
         {
-            mugTrigger = MultipleColorTrigger;
+            mugTrigger = SingleColorTrigger;
         }
         else
         {
-            mugTrigger = SingleColorTrigger;
+            mugTrigger = DoubleColorTrigger;
         }
 
 
@@ -55,7 +59,7 @@ public class Mug : MonoBehaviour
     {
         //scoreTextObj.text = mugRemaining.ToString();
 
-        scoreTextObj.text = colorMatrix.RemainingTotalSugar().ToString();
+        scoreTextObj.text = (primaryRemaining + secondaryRemaining).ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,11 +67,15 @@ public class Mug : MonoBehaviour
         mugTrigger(collision);
     }
 
+    int TotalRemaining()
+    {
+        return primaryRemaining + secondaryRemaining;
+    }
 
     void SingleColorTrigger(Collider2D collision)
     {
 
-        Debug.Log("Single Color Trigger Activated");
+        //Debug.Log("Single Color Trigger Activated");
         //if && works like C/C++, the first item will get checked first
 
         //order of elimination:
@@ -77,55 +85,48 @@ public class Mug : MonoBehaviour
         //the original Sugar Sugar game would accept/destroy all particles at this point, but
         //wouldnt decrement the counter. so ive replicated this with a nested if
 
-        int mugRemaining = colorMatrix.RemainingTotalSugar();
 
-        if (mugRemaining > 0 && collision.CompareTag("Particle"))
+        if (TotalRemaining() < 1 || !collision.CompareTag("Particle"))
         {
-            if (collision.GetComponent<SpriteRenderer>().color
-                == gameObject.GetComponent<SpriteRenderer>().color)
-            {
-                mugRemaining--;
-            }
-
-            
-
+            return;
         }
+
+        if (primary == collision.GetComponent<SpriteRenderer>().color)
+        {
+            primaryRemaining--;
+        }
+
+        Destroy(collision.gameObject);
     }
 
 
 
 
-
+    //nested ifs for bounds checking
     //heavier, so seperated
-    void MultipleColorTrigger(Collider2D collision)
+    void DoubleColorTrigger(Collider2D collision)
     {
-
-        int remainingColoredSugar;
-
-        //see if the color exists in the dictionary
-        if(!colorMatrix.GetDictionary().TryGetValue(
-           collision.GetComponent<SpriteRenderer>().color, out remainingColoredSugar))
+        if (TotalRemaining() < 1 || !collision.CompareTag("Particle"))
         {
-            //Debug.Log("No Match " + collision.GetComponent<SpriteRenderer>().color + " " 
-            //          + colorMatrix.GetDictionary()[Color.white]);
-
-            Destroy(collision.gameObject);
             return;
         }
 
-        if(remainingColoredSugar < 1 || !collision.CompareTag("Particle"))
+        if (primary == collision.GetComponent<SpriteRenderer>().color)
         {
-            //Debug.Log("Not Particle or sugar filled");
-            //Destroy(collision.gameObject);
-            return;
+            if (primaryRemaining > 0)
+            {
+                primaryRemaining--;
+            }
+        }
+        else if (secondary == collision.GetComponent<SpriteRenderer>().color) {
+            if (secondaryRemaining > 0)
+            {
+                secondaryRemaining--;
+            }
         }
 
-        //Debug.Log("decrement time");
-        colorMatrix.GetDictionary()[collision.GetComponent<SpriteRenderer>().color]--;
-
-        //remainingColoredSugar--;
         Destroy(collision.gameObject);
-        return;
+
 
 
 
@@ -134,26 +135,21 @@ public class Mug : MonoBehaviour
 
     //change at this level, update both the mug color and secondary color
     //this is a stopgap automation tool but i just want to move on to doing levels
-    //if secondary has an alpha level, then this is interpreted as not existing
-    //stupid and inefficient
-    //TODO: redesign this at somepoint
-
-    /*
+    //changes stripes if secondary remaining is larger than 0
+    
 
     private void OnValidate()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = primary;
-
-        //checks the alpha, applies to stripes
-        if(secondary.a != 1)
+        baseColorObject.color = primary;
+        if(secondaryRemaining < 1)
         {
-            mugStripes.color = primary;
+            secondaryColorObject.color = primary;
             return;
         }
 
-        mugStripes.color = secondary;
+        secondaryColorObject.color = secondary;
 
     }
-    */
+    
 
 }

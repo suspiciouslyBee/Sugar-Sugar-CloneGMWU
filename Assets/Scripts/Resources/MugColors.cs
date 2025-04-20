@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MugColors : SerializedDictionary<Color, int>
 {
+    public Color primary = Color.white;
+    //public Color secondary = Color.white;
+    public SpriteRenderer baseColor;
+    public SpriteRenderer secondaryColor;
+
+
     public int RemainingTotalSugar()
     {
         return GetDictionary().Values.Sum();
