@@ -11,7 +11,7 @@ public class MugColors : SerializedDictionary<Color, int>
 
     public int ColorCount()
     {
-        DEBUG_dumpDict();
+        //DEBUG_dumpDict();
         return GetDictionary().Values.Count();
     }
 

@@ -1044,6 +1044,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: newDict.thisDictItems.Array.data[0].key.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
+      propertyPath: newDict.thisDictItems.Array.data[1].key.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226572382271704207, guid: bf50f489292dd1b40a1379023425c898, type: 3}
       propertyPath: newDict.thisDictItems.Array.data[1].key.b
       value: 0
       objectReference: {fileID: 0}
