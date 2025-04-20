@@ -19,6 +19,11 @@ public class SerializedDictionary<T1, T2> : MonoBehaviour
     {
         objectsNames = newDict.ToDictionary();
     }
+
+    public Dictionary<T1, T2> GetDictionary()
+    {
+        return objectsNames;
+    }
 }
 [Serializable]
 public class DictionaryWrapper <T1, T2>
@@ -36,6 +41,8 @@ public class DictionaryWrapper <T1, T2>
         }
         return newDict;
     }
+
+
 }
 
 [Serializable]

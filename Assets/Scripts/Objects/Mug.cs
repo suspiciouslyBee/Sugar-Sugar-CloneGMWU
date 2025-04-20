@@ -8,27 +8,54 @@ public class Mug : MonoBehaviour
 
 
     //bake
-    public int mugRemaining = 100;
+  
     public TextMeshProUGUI scoreTextObj; //just store the ref
 
-  
-    public SerializedDictionary<Color, int> colors = new SerializedDictionary<Color, int>();
-   
 
+    public delegate void TriggerHandler(Collider2D collision);
+    TriggerHandler mugTrigger;
+
+
+    public MugColors colorMatrix;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        scoreTextObj.text = mugRemaining.ToString();
+        //mugRemaining = colorMatrix.RemainingTotalSugar();
+        //scoreTextObj.text = mugRemaining.ToString();
+
+        scoreTextObj.text = colorMatrix.RemainingTotalSugar().ToString();
+
+        //set the behavior mode between single or dynamic
+
+        if (colorMatrix.ColorCount() > 1)
+        {
+            mugTrigger = MultipleColorTrigger;
+        }
+        else
+        {
+            mugTrigger = SingleColorTrigger;
+        }
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreTextObj.text = mugRemaining.ToString();
+        //scoreTextObj.text = mugRemaining.ToString();
+
+        scoreTextObj.text = colorMatrix.RemainingTotalSugar().ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        mugTrigger(collision);
+    }
+
+
+    void SingleColorTrigger(Collider2D collision)
     {
         //if && works like C/C++, the first item will get checked first
 
@@ -39,6 +66,7 @@ public class Mug : MonoBehaviour
         //the original Sugar Sugar game would accept/destroy all particles at this point, but
         //wouldnt decrement the counter. so ive replicated this with a nested if
 
+        int mugRemaining = colorMatrix.RemainingTotalSugar();
 
         if (mugRemaining > 0 && collision.CompareTag("Particle"))
         {
@@ -48,8 +76,42 @@ public class Mug : MonoBehaviour
                 mugRemaining--;
             }
 
-            Destroy(collision.gameObject);
+            
 
         }
     }
+
+
+
+
+
+    //heavier, so seperated
+    void MultipleColorTrigger(Collider2D collision)
+    {
+
+        int remainingColoredSugar;
+
+        //see if the color exists in the dictionary
+        if(!colorMatrix.GetDictionary().TryGetValue(
+           gameObject.GetComponent<SpriteRenderer>().color, out remainingColoredSugar))
+        {
+            Destroy(collision.gameObject);
+            return;
+        }
+
+        if(remainingColoredSugar < 1 || !collision.CompareTag("Particle"))
+        {
+            Destroy(collision.gameObject);
+            return;
+        }
+
+        remainingColoredSugar--;
+        Destroy(collision.gameObject);
+        return;
+
+
+
+    }
+
+
 }
