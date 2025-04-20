@@ -57,6 +57,8 @@ public class Mug : MonoBehaviour
 
     void SingleColorTrigger(Collider2D collision)
     {
+
+        Debug.Log("Single Color Trigger Activated");
         //if && works like C/C++, the first item will get checked first
 
         //order of elimination:
@@ -93,19 +95,25 @@ public class Mug : MonoBehaviour
 
         //see if the color exists in the dictionary
         if(!colorMatrix.GetDictionary().TryGetValue(
-           gameObject.GetComponent<SpriteRenderer>().color, out remainingColoredSugar))
+           collision.GetComponent<SpriteRenderer>().color, out remainingColoredSugar))
         {
+            Debug.Log("No Match " + collision.GetComponent<SpriteRenderer>().color + " " 
+                      + colorMatrix.GetDictionary()[Color.white]);
             Destroy(collision.gameObject);
             return;
         }
 
         if(remainingColoredSugar < 1 || !collision.CompareTag("Particle"))
         {
+            Debug.Log("Not Particle or sugar filled");
             Destroy(collision.gameObject);
             return;
         }
 
-        remainingColoredSugar--;
+        Debug.Log("decrement time");
+        colorMatrix.GetDictionary()[collision.GetComponent<SpriteRenderer>().color]--;
+
+        //remainingColoredSugar--;
         Destroy(collision.gameObject);
         return;
 
