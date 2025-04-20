@@ -32,6 +32,8 @@ public class Mug : MonoBehaviour
     public SpriteRenderer secondaryColorObject;
     public int secondaryRemaining = 0;
    
+    public bool isFilled = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,7 +66,28 @@ public class Mug : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isFilled)
+        {
+            return;
+        }
+
+        if (TotalRemaining() < 1 || !collision.CompareTag("Particle"))
+        {
+            return;
+        }
         mugTrigger(collision);
+        Destroy(collision.gameObject);
+
+        if(TotalRemaining() < 1)
+        {
+            isFilled = true;
+            //function to the scene manager
+
+            //doing this asyncly because its not imparitive that this happens right now, holding
+            //up game updates
+            GameManager.Instance.SendMessage("CheckFilledCups");
+        }
+
     }
 
     int TotalRemaining()
@@ -86,17 +109,13 @@ public class Mug : MonoBehaviour
         //wouldnt decrement the counter. so ive replicated this with a nested if
 
 
-        if (TotalRemaining() < 1 || !collision.CompareTag("Particle"))
-        {
-            return;
-        }
 
         if (primary == collision.GetComponent<SpriteRenderer>().color)
         {
             primaryRemaining--;
         }
 
-        Destroy(collision.gameObject);
+        
     }
 
 
@@ -106,10 +125,6 @@ public class Mug : MonoBehaviour
     //heavier, so seperated
     void DoubleColorTrigger(Collider2D collision)
     {
-        if (TotalRemaining() < 1 || !collision.CompareTag("Particle"))
-        {
-            return;
-        }
 
         if (primary == collision.GetComponent<SpriteRenderer>().color)
         {
@@ -125,7 +140,7 @@ public class Mug : MonoBehaviour
             }
         }
 
-        Destroy(collision.gameObject);
+       
 
 
 
