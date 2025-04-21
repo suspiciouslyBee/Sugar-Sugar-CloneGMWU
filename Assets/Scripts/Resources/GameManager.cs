@@ -70,8 +70,16 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject mug in mugs)
         {
-            //because i didnt want to do a forloop *titanic recorder cover music*
-            numberOfFilledMugs += mug.gameObject.GetComponent<Mug>().isFilled.ConvertTo<int>();
+
+            if (mug.gameObject.GetComponent<Mug>().isFilled)
+            {
+                numberOfFilledMugs++;
+            }
+        }
+
+        if (numberOfFilledMugs >= mugs.Length)
+        {
+            NextStage();
         }
     }
 
