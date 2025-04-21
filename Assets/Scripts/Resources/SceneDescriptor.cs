@@ -39,12 +39,26 @@ public class SceneDescriptor : MonoBehaviour
         
     }
 
-    /*
+    
     private void OnValidate()
     {
-        spawnerColors = new List<Color>(spawners.Count);
+        GameObject[] foregroundObjects = GameObject.FindGameObjectsWithTag("Foreground");
+        foreach (GameObject foregroundObject in foregroundObjects)
+        {
+            if (foregroundObject != null)
+            {
+                foregroundObject.GetComponent<SpriteRenderer>().color = foregroundColor;
+            }
+        }
+        Camera.main.backgroundColor = backgroundColor;
+        
+        //auto populate
+
+    
+
+
+        //GameObject[] text = GameObject.FindGameObjectsWithTag("Foreground");
     }
-    */
 
 
     public void UpdateSceneGravity(float newGravity)

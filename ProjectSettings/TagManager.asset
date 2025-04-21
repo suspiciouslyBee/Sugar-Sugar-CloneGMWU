@@ -8,6 +8,7 @@ TagManager:
   - Particle
   - Spawner
   - Mug
+  - Foreground
   layers:
   - Default
   - TransparentFX
