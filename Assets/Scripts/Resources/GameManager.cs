@@ -1,10 +1,12 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance;
+    //int currentSceneIndex;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,8 +48,20 @@ public class GameManager : MonoBehaviour
             //because i didnt want to do a forloop *titanic recorder cover music*
             numberOfFilledMugs += mug.gameObject.GetComponent<Mug>().isFilled.ConvertTo<int>();
         }
-
-
     }
+
+    //Loads the next stage by build index
+    void NextStage()
+    {
+        //int currentIndex = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    void ReloadStage()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 
 }
