@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             ReloadStage();
         }
 
-        if (Input.GetKeyDown(KeyCode.Plus))
+        if (Input.GetKeyDown(KeyCode.Equals))
         {
             NextStage();
         }

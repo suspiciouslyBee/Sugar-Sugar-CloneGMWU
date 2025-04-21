@@ -13,7 +13,11 @@ public class SceneDescriptor : MonoBehaviour
     public float localDefaultDelay = 0; 
 
     public List<ParticleSpawner> spawners;
-    //public List<Color> spawnerColors;
+
+
+    public Color backgroundColor;
+    public Color foregroundColor;
+    public Color textColor;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
