@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadStage();
+        }
     }
 
 
@@ -51,16 +54,33 @@ public class GameManager : MonoBehaviour
     }
 
     //Loads the next stage by build index
+    //does nothing if invalid
+    void ChangeStage(int number)
+    {
+        int newIndex = SceneManager.GetActiveScene().buildIndex + number;
+
+        //bounds check
+        if(0 > newIndex || newIndex > SceneManager.sceneCountInBuildSettings - 1)
+        {
+            return;
+        }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + number);
+    }
+
+    void PreviousStage()
+    {
+        ChangeStage(-1);
+    }
+
     void NextStage()
     {
-        //int currentIndex = SceneManager.GetActiveScene().buildIndex;
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        ChangeStage(1);
     }
 
     void ReloadStage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ChangeStage(0);
     }
 
 
