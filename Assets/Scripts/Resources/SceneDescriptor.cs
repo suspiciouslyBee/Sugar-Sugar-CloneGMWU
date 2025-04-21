@@ -66,6 +66,15 @@ public class SceneDescriptor : MonoBehaviour
         }
         Camera.main.backgroundColor = backgroundColor;
 
+        GameObject[]
+        text = GameObject.FindGameObjectsWithTag("Text");
+        foreach(GameObject textObject in text)
+        {
+            if (textObject != null)
+            {
+                textObject.GetComponent<SpriteRenderer>().color = textColor;
+            }
+        }
         //auto populate
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
         foreach (GameObject spawner in spawners)

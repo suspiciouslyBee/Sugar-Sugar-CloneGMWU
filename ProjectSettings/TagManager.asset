@@ -9,6 +9,7 @@ TagManager:
   - Spawner
   - Mug
   - Foreground
+  - Text
   layers:
   - Default
   - TransparentFX
