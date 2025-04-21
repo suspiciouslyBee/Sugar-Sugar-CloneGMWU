@@ -15,9 +15,9 @@ public class SceneDescriptor : MonoBehaviour
     public List<ParticleSpawner> spawners;
 
 
-    public Color backgroundColor;
-    public Color foregroundColor;
-    public Color textColor;
+    public Color backgroundColor = Color.grey;
+    public Color foregroundColor = Color.white;
+    public Color textColor = Color.white;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +31,9 @@ public class SceneDescriptor : MonoBehaviour
 
         localInstance = this;
         //no dont destroy here.
+
+
+        GameManager.Instance.UpdateDrawColor(foregroundColor);
     }
 
     // Update is called once per frame
@@ -54,7 +57,14 @@ public class SceneDescriptor : MonoBehaviour
         
         //auto populate
 
-    
+        foreach(ParticleSpawner spawner in spawners)
+        {
+            spawner.spawnDelay = localDefaultDelay;
+        }
+
+        UpdateSceneGravity(localDefaultGravityScale);
+
+
 
 
         //GameObject[] text = GameObject.FindGameObjectsWithTag("Foreground");
