@@ -63,7 +63,7 @@ public class TouchDraw : MonoBehaviour
         EdgeCollider2D edge = newStroke.GetComponent<EdgeCollider2D>();
         List<Vector2> points = new List<Vector2>();
         line.positionCount = 0;
-        //edge.Reset();
+
 
         while(true) {
 
@@ -71,10 +71,9 @@ public class TouchDraw : MonoBehaviour
             position.z = 0;
             line.positionCount++;
 
-            //edge.points = line.GetComponent
+
             line.SetPosition(line.positionCount-1, position);
-            //Vector3[] positionList = new Vector3[line.positionCount];
-            //line.GetPositions(positionList);
+
 
             //auto culls z
             points.Add(position);
