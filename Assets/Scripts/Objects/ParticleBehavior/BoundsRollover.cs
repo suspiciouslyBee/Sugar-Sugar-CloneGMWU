@@ -27,5 +27,10 @@ public class BoundsRollover : MonoBehaviour
             transform.position.z);
         }
 
+        //oob
+        if (0 > correctedPos.x || correctedPos.x > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
