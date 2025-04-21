@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localDefaultGravityScale: 0.08
-  localDefaultDelay: 0
+  localDefaultDelay: 5
+  localMaxParticleSpeed: 0.75
   spawners:
   - {fileID: 0}
+  backgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  foregroundColor: {r: 1, g: 1, b: 1, a: 1}
+  textColor: {r: 1, g: 1, b: 1, a: 1}

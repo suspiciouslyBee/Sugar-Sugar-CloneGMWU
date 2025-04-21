@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -10,16 +11,21 @@ public class SceneDescriptor : MonoBehaviour
     public static SceneDescriptor localInstance;
 
     public float localDefaultGravityScale = 0.1f;
-    public float localDefaultDelay = 0; 
+    public float localDefaultDelay = 5;
+    public float localMaxParticleSpeed = 0.75f;
 
-    public List<ParticleSpawner> spawners;
-    //public List<Color> spawnerColors;
+    public GameObject[] spawners;
+
+
+    public Color backgroundColor = Color.grey;
+    public Color foregroundColor = Color.white;
+    public Color textColor = Color.white;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(localInstance != null)
+        if (localInstance != null)
         {
             Destroy(gameObject);
             return;
@@ -27,28 +33,66 @@ public class SceneDescriptor : MonoBehaviour
 
         localInstance = this;
         //no dont destroy here.
+
+        
+        GameManager.Instance.UpdateDrawColor(foregroundColor);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    /*
+
     private void OnValidate()
     {
-        spawnerColors = new List<Color>(spawners.Count);
+        SyncData();
+
+        //GameObject[] text = GameObject.FindGameObjectsWithTag("Foreground");
     }
-    */
+
+
+    public void SyncData()
+    {
+        GameObject[]
+        foregroundObjects = GameObject.FindGameObjectsWithTag("Foreground");
+        foreach (GameObject foregroundObject in foregroundObjects)
+        {
+            if (foregroundObject != null)
+            {
+                foregroundObject.GetComponent<SpriteRenderer>().color = foregroundColor;
+            }
+        }
+        Camera.main.backgroundColor = backgroundColor;
+
+        GameObject[]
+        text = GameObject.FindGameObjectsWithTag("Text");
+        foreach(GameObject textObject in text)
+        {
+            if (textObject != null)
+            {
+                textObject.GetComponent<SpriteRenderer>().color = textColor;
+            }
+        }
+        //auto populate
+        spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        foreach (GameObject spawner in spawners)
+        {
+            spawner.gameObject.GetComponent<ParticleSpawner>().spawnDelay = localDefaultDelay;
+        }
+
+        UpdateSceneGravity(localDefaultGravityScale);
+    }
+
 
 
     public void UpdateSceneGravity(float newGravity)
     {
-       localDefaultGravityScale = newGravity;
+        localDefaultGravityScale = newGravity;
         foreach (var spawner in spawners)
         {
-            spawner.UpdateGravity(newGravity);
+            spawner.gameObject.GetComponent<ParticleSpawner>().UpdateGravity(newGravity);
         }
     }
 }

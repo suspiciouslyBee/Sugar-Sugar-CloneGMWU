@@ -7,6 +7,9 @@ TagManager:
   - DEBUG_Physics
   - Particle
   - Spawner
+  - Mug
+  - Foreground
+  - Text
   layers:
   - Default
   - TransparentFX
