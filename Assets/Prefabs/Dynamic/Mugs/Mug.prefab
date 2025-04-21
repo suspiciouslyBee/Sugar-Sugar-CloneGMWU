@@ -254,6 +254,7 @@ MonoBehaviour:
   secondary: {r: 1, g: 1, b: 1, a: 1}
   secondaryColorObject: {fileID: 5837730820486467309}
   secondaryRemaining: 0
+  isFilled: 0
 --- !u!1 &4158447943091320974
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ TagManager:
   - DEBUG_Physics
   - Particle
   - Spawner
+  - Mug
   layers:
   - Default
   - TransparentFX
