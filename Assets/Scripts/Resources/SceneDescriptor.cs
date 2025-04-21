@@ -11,7 +11,8 @@ public class SceneDescriptor : MonoBehaviour
     public static SceneDescriptor localInstance;
 
     public float localDefaultGravityScale = 0.1f;
-    public float localDefaultDelay = 0;
+    public float localDefaultDelay = 5;
+    public float localMaxParticleSpeed = 0.75f;
 
     public GameObject[] spawners;
 
