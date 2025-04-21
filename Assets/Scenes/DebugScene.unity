@@ -1145,11 +1145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5648328462636667257, guid: 6ea47fdc46a4d8341bf6698029b95587, type: 3}
       propertyPath: foregroundColor.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5648328462636667257, guid: 6ea47fdc46a4d8341bf6698029b95587, type: 3}
       propertyPath: foregroundColor.g
-      value: 1
+      value: 0.9598557
       objectReference: {fileID: 0}
     - target: {fileID: 5648328462636667257, guid: 6ea47fdc46a4d8341bf6698029b95587, type: 3}
       propertyPath: foregroundColor.r
@@ -1456,10 +1456,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 864255434446420246, guid: 96e54bc1ed9458f489d183fc2ffb5fe3, type: 3}
-      propertyPath: lineMat
-      value: 
-      objectReference: {fileID: 2100000, guid: e362ffb15b79b6e479c343a5970d1650, type: 2}
     - target: {fileID: 5339414709685795358, guid: 96e54bc1ed9458f489d183fc2ffb5fe3, type: 3}
       propertyPath: m_Name
       value: Game Manager

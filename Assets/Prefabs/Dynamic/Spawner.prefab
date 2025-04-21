@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3c3b8935c07914382eddb1f3e0ae4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainingSugar: 0
-  infiniteSpawn: 1
+  remainingSugar: 500
+  infiniteSpawn: 0
   spawnInterval: 0.1
-  spawnDelay: 2
+  spawnDelay: 0
   SugarObject: {fileID: 4722764541341458141, guid: 5f0097e5fdb4eb64da489a688ee5df5a, type: 3}

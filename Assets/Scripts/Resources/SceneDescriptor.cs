@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -10,9 +11,9 @@ public class SceneDescriptor : MonoBehaviour
     public static SceneDescriptor localInstance;
 
     public float localDefaultGravityScale = 0.1f;
-    public float localDefaultDelay = 0; 
+    public float localDefaultDelay = 0;
 
-    public List<ParticleSpawner> spawners;
+    public GameObject[] spawners;
 
 
     public Color backgroundColor = Color.grey;
@@ -23,7 +24,7 @@ public class SceneDescriptor : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(localInstance != null)
+        if (localInstance != null)
         {
             Destroy(gameObject);
             return;
@@ -32,20 +33,29 @@ public class SceneDescriptor : MonoBehaviour
         localInstance = this;
         //no dont destroy here.
 
-
+        
         GameManager.Instance.UpdateDrawColor(foregroundColor);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    
+
     private void OnValidate()
     {
-        GameObject[] foregroundObjects = GameObject.FindGameObjectsWithTag("Foreground");
+        SyncData();
+
+        //GameObject[] text = GameObject.FindGameObjectsWithTag("Foreground");
+    }
+
+
+    public void SyncData()
+    {
+        GameObject[]
+        foregroundObjects = GameObject.FindGameObjectsWithTag("Foreground");
         foreach (GameObject foregroundObject in foregroundObjects)
         {
             if (foregroundObject != null)
@@ -54,29 +64,25 @@ public class SceneDescriptor : MonoBehaviour
             }
         }
         Camera.main.backgroundColor = backgroundColor;
-        
-        //auto populate
 
-        foreach(ParticleSpawner spawner in spawners)
+        //auto populate
+        spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        foreach (GameObject spawner in spawners)
         {
-            spawner.spawnDelay = localDefaultDelay;
+            spawner.gameObject.GetComponent<ParticleSpawner>().spawnDelay = localDefaultDelay;
         }
 
         UpdateSceneGravity(localDefaultGravityScale);
-
-
-
-
-        //GameObject[] text = GameObject.FindGameObjectsWithTag("Foreground");
     }
+
 
 
     public void UpdateSceneGravity(float newGravity)
     {
-       localDefaultGravityScale = newGravity;
+        localDefaultGravityScale = newGravity;
         foreach (var spawner in spawners)
         {
-            spawner.UpdateGravity(newGravity);
+            spawner.gameObject.GetComponent<ParticleSpawner>().UpdateGravity(newGravity);
         }
     }
 }
