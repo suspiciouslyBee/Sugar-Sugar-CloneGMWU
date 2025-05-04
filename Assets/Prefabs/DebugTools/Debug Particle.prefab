@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3199165304862321694}
   m_Layer: 0
   m_Name: Debug Particle
-  m_TagString: DEBUG_Physics
+  m_TagString: Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
